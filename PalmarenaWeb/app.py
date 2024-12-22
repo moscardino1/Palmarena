@@ -29,7 +29,7 @@ def read_summaries():
 def home():
     chapters = []
     # Read synopsis from the synopsis file
-    with open('static/data/0. Synopsis/0. Synopsis.txt', 'r') as file:
+    with open('static/data/0_Synopsis/0. Synopsis.txt', 'r') as file:
         synopsis = file.read()
 
     # Read summaries from the Summaries.txt file
@@ -37,8 +37,8 @@ def home():
 
     # Read chapter files from the data directory
     for i in range(1, 9):
-        chapter_folder = f'static/data/{i}. {get_chapter_title(i)}'
-        chapter_file = f'{chapter_folder}/{i}. {get_chapter_title(i)}.txt'
+        chapter_folder = f'static/data/{i}_{get_chapter_title(i).replace(" ", "_")}'  # Replace spaces with underscores
+        chapter_file = f'{chapter_folder}/{i}. {get_chapter_title(i)}.txt'  # Replace spaces with underscores
         image_file = f'{chapter_folder}/image.jpg'  # Assuming the image is named 'image.jpg'
         
         with open(chapter_file, 'r') as file:
@@ -48,18 +48,16 @@ def home():
                 'content': content[:150] + '...',  # Preview of the first 150 characters
                 'image': image_file,  # Add image path to chapter data
                 'id': i,  # Add chapter ID for linking
-                'summary': summaries.get(f'**Chapter {i}', '')[:150] + '...' # Get the summary for the chapter from Summaries.txt
+                'summary': summaries.get(f'**Chapter {i}', '')[:150] + '...'  # Get the summary for the chapter from Summaries.txt
             })
     return render_template('index.html', chapters=chapters, synopsis=synopsis)
 
 @app.route('/chapter/<int:chapter_id>')
 def chapter(chapter_id):
-    # Fetch chapter content and title from your data source
     chapter_content = get_chapter_content(chapter_id)
     chapter_title = get_chapter_title(chapter_id)
     
-    # Construct the video filename based on the chapter title
-    video_filename = f"data/{chapter_id}. {chapter_title}/test.m4v"  # Adjust the path as necessary
+    video_filename = f"data/{chapter_id}_{chapter_title.replace(' ', '_')}/test.m4v"
 
     return render_template('chapter.html', title=chapter_title, content=chapter_content, video_filename=video_filename)
 
@@ -77,8 +75,7 @@ def get_chapter_title(chapter_number):
     return titles[chapter_number - 1]
 
 def get_chapter_content(chapter_id):
-    # Assuming chapter files are stored in a specific directory
-    chapter_folder = f'static/data/{chapter_id}. {get_chapter_title(chapter_id)}'
+    chapter_folder = f'static/data/{chapter_id}_{get_chapter_title(chapter_id).replace(" ", "_")}'
     chapter_file = f'{chapter_folder}/{chapter_id}. {get_chapter_title(chapter_id)}.txt'
     
     try:

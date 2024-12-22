@@ -39,8 +39,7 @@
             <div class="chapter-card bg-white p-10 rounded-none relative overflow-hidden group">
                 <!-- Video Element -->
                 <video class="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300" autoplay muted loop>
-                    <source src="{{ url_for('static', filename='data/' + chapter.id|string + '. ' + chapter.title + '/test.m4v') }}" type="video/mp4">
-                    Your browser does not support the video tag.
+                    <source src="{{ url_for('static', filename='data/' + chapter.id|string + '_' + chapter.title.replace(' ', '_') + '/test.m4v') }}" type="video/mp4">                    Your browser does not support the video tag.
                 </video>
                 <h3 class="text-2xl font-normal tracking-wide text-coral-red mb-6 relative z-10">{{ chapter.title }}</h3>
                 <p class="text-dark-gray tracking-wide leading-relaxed mt-4 relative z-10">{{ chapter.summary }}</p>
