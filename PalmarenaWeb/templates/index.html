@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Palmarena - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="pt-32 pb-20 artistic-bg hero-background" id="about">
+    <video autoplay muted loop class="video-background">
+        <source src="{{ url_for('static', filename='data/test.m4v') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+        <div class="text-center space-y-8">
+            <h1 class="text-7xl font-normal tracking-wider text-navy-blue">Palmarena</h1>
+            <p class="text-lg tracking-wide leading-relaxed max-w-2xl mx-auto text-dark-gray">
+                Where the Mediterranean stretches endlessly into azure horizons. 
+                A tale of passion and redemption unfolds under the warm embrace of the summer sun.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Synopsis Section -->
+<div class="py-24 bg-white" id="story">
+    <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-4xl font-normal tracking-wide text-center mb-16 text-navy-blue">The Story</h2>
+        <p class="text-lg leading-relaxed text-dark-gray tracking-wide justified-text">
+            {{ synopsis.replace('\n', '<br>') | safe }}
+        </p>
+    </div>
+</div>
+
+<!-- Chapters Grid -->
+<div class="py-24 chapters-background" id="chapters">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-normal tracking-wide text-center mb-16 text-navy-blue">Chapters</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {% for chapter in chapters %}
+            <div class="chapter-card bg-white p-10 rounded-none relative overflow-hidden group">
+                <!-- Video Element -->
+                <video class="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300" autoplay muted loop>
+                    <source src="{{ url_for('static', filename='data/' + chapter.id|string + '. ' + chapter.title + '/test.m4v') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3 class="text-2xl font-normal tracking-wide text-coral-red mb-6 relative z-10">{{ chapter.title }}</h3>
+                <p class="text-dark-gray tracking-wide leading-relaxed mt-4 relative z-10">{{ chapter.summary }}</p>
+                <div class="mt-8 relative z-10">
+                    <a href="/chapter/{{ chapter.id }}" class="inline-block text-sm tracking-[0.2em] text-navy-blue hover:text-sun-yellow bg-white bg-opacity-70 p-2 rounded">
+                        READ MORE →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="py-24 bg-white" id="contact">
+    <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-4xl font-normal tracking-wide text-center mb-16 text-navy-blue">Contact Us</h2>
+        <p class="text-lg leading-relaxed text-dark-gray tracking-wide">
+            For inquiries, please reach out to us at contact@palmarena.com.
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+:root {
+    --bright-yellow: #F9E547;   /* Vibrant sunlit yellow */
+    --vivid-blue: #4BA3C3;      /* Deep aqua blue */
+    --bold-red: #E84C3D;        /* Playful bold red */
+    --soft-pink: #F9A3B8;       /* Warm pastel pink */
+    --grass-green: #6DB870;     /* Lush green */
+    --bright-orange: #F89728;   /* Energetic orange */
+    --navy-blue: #2B3A67;       /* Deep navy blue for text */
+    --light-cream: #FDF5E6;     /* Soft neutral cream background */
+}
+
+body {
+    font-family: 'Tenor Sans', sans-serif;
+    background-color: var(--light-cream);
+    color: var(--navy-blue);
+}
+
+.chapter-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bright-orange);
+    border: 3px solid var(--vivid-blue);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 var(--bold-red);
+}
+
+.chapter-card:hover {
+    transform: rotate(-2deg) translateY(-5px);
+    box-shadow: 8px 8px 0 var(--bright-orange);
+}
+
+h1, h2, h3 {
+    font-family: 'Italiana', serif;
+    color: var(--bold-red);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Add hand-drawn effect for buttons */
+button {
+    font-family: 'Tenor Sans', sans-serif;
+    background-color: var(--vivid-blue);
+    color: var(--light-cream);
+    border: 3px dashed var(--bold-red);
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 0 var(--grass-green);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--bright-yellow);
+    color: var(--navy-blue);
+    box-shadow: 6px 6px 0 var(--vivid-blue);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.chapter-content {
+    text-align: justify; /* Align text to both the left and right edges */
+    line-height: 1.8;    /* Add generous line spacing for readability */
+    white-space: pre-line; /* Preserve line breaks from the text */
+    margin-bottom: 2rem; /* Add spacing at the bottom of the section */
+    font-family: 'Tenor Sans', sans-serif; /* Ensure consistent font */
+    font-size: 18px; /* Slightly larger text for comfort */
+    color: var(--dark-gray);
+}
+
+.video-background {
+    position: absolute; /* Position it absolutely */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the entire section */
+    z-index: -1; /* Send it to the back */
+    opacity: 0.8; /* Optional: Adjust opacity for better text visibility */
+}
+
+.hero-background {
+    position: relative; /* Position relative for the video */
+    overflow: hidden; /* Hide overflow */
+}
+
+.chapters-background {
+    background-color: var(--bright-yellow); /* Use a solid vibrant yellow */
+    padding: 2rem; /* Add some padding */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+.justified-text {
+    text-align: justify; /* Justify the text */
+}
+
+/* Add this to your CSS file */
+.chapter-card h3,
+.chapter-card p {
+    background-color: rgba(255, 255, 255, 0.7); /* White background with transparency */
+    padding: 10px; /* Add some padding */
+    border-radius: 5px; /* Optional: rounded corners */
+}
