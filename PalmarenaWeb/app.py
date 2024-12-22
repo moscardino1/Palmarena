@@ -34,7 +34,6 @@ def home():
 
     # Read summaries from the Summaries.txt file
     summaries = read_summaries()
-    print("Summaries:", summaries)  # Debugging line
 
     # Read chapter files from the data directory
     for i in range(1, 9):
