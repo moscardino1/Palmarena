@@ -5,7 +5,7 @@
 {% block content %}
 <!-- Chapter Title Section -->
 <div class="pt-32 pb-20 artistic-bg relative">
-    <video autoplay muted loop class="video-background">
+    <video  loading="lazy" autoplay muted loop class="video-background">
         <source src="{{ url_for('static', filename=video_filename) }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
