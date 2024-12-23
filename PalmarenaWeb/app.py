@@ -29,7 +29,7 @@ def read_summaries():
 def home():
     chapters = []
     # Read synopsis from the synopsis file
-    with open('static/data/0_Synopsis/0. Synopsis.txt', 'r') as file:
+    with open('static/data/0_Synopsis/0_Synopsis.txt', 'r') as file:
         synopsis = file.read()
 
     # Read summaries from the Summaries.txt file
@@ -38,7 +38,7 @@ def home():
     # Read chapter files from the data directory
     for i in range(1, 9):
         chapter_folder = f'static/data/{i}_{get_chapter_title(i).replace(" ", "_")}'  # Replace spaces with underscores
-        chapter_file = f'{chapter_folder}/{i}. {get_chapter_title(i)}.txt'  # Replace spaces with underscores
+        chapter_file = f'{chapter_folder}/{i}_{get_chapter_title(i).replace(" ", "_")}.txt'  # Replace spaces with underscores
         image_file = f'{chapter_folder}/image.jpg'  # Assuming the image is named 'image.jpg'
         
         with open(chapter_file, 'r') as file:
@@ -63,20 +63,20 @@ def chapter(chapter_id):
 
 def get_chapter_title(chapter_number):
     titles = [
-        "Arrival at Palmarena",
+        "Arrival At Palmarena",
         "Morning Rituals",
-        "Echoes of the Past",
+        "Echoes Of The Past",
         "The Party",
-        "Secrets and Lies",
+        "Secrets And Lies",
         "Confrontations",
-        "Reflections by the Pool",
+        "Reflections By The Pool",
         "New Beginnings"
     ]
     return titles[chapter_number - 1]
 
 def get_chapter_content(chapter_id):
     chapter_folder = f'static/data/{chapter_id}_{get_chapter_title(chapter_id).replace(" ", "_")}'
-    chapter_file = f'{chapter_folder}/{chapter_id}. {get_chapter_title(chapter_id)}.txt'
+    chapter_file = f'{chapter_folder}/{chapter_id}_{get_chapter_title(chapter_id).replace(" ", "_")}.txt'
     
     try:
         with open(chapter_file, 'r') as file:
